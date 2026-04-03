@@ -1,130 +1,63 @@
-# Finance Dashboard Backend
+# Finance Backend API
 
 ## Overview
 
-This project is a backend system for a finance dashboard.
+This is a backend project for a finance dashboard system.
+
 
 ---
 
-## Tech Stack
+## 🔗 Live API
 
-* Node.js
-* Express.js
-* MongoDB Atlas
-* JWT Authentication
+https://zorvyn-backend-f3dr.onrender.com
 
 ---
 
 ## Features
 
-### User & Role Management
+* User authentication (JWT)
+* Role-based access control
+* CRUD operations for financial records
+* Filtering and pagination
+* Dashboard APIs:
 
-* Users can register and login
-* Each user has a role:
-
-  * Viewer → can only view data
-  * Analyst → can view records and analytics
-  * Admin → full access (create, update, delete)
-
----
-
-### Financial Records
-
-Users can:
-
-* Add income/expense records
-* Update records
-* Delete records
-* View records
-
-Each record contains:
-
-* Amount
-* Type (income / expense)
-* Category
-* Date
-* Notes
+  * Total income / expense
+  * Net balance
+  * Category-wise data
+  * Monthly trends
 
 ---
 
-### Filtering & Pagination
+## Roles
 
-* Filter records by:
+By default, when a user registers, they are assigned the role **Viewer**.
 
-  * type
-  * category
-  * date range
-* Pagination supported:
+There are 3 roles in the system:
 
-  ```
-  /api/records?page=1&limit=10
-  ```
+* **Viewer** → can only view data
+* **Analyst** → can view records + analytics
+* **Admin** → full access (create, update, delete)
 
 ---
 
-### Dashboard APIs
+## Test Credentials
 
-The backend provides data for dashboard:
+You can use these accounts to test different roles:
 
-* Total income
-* Total expenses
-* Net balance
-* Category-wise totals
-* Monthly trends
+### Admin
 
-These are implemented using MongoDB aggregation.
+* Email: `admin@test.com`
+* Password: `123456`
 
----
+### Analyst
 
-### Authentication & Access Control
+* Email: `analyser@test.com`
+* Password: `123456`
 
-* JWT based authentication
-* Protected routes
-* Role-based access using middleware
+### Viewer
 
----
-
-## Project Structure
-
-```
-src/
-  config/
-  models/
-  controllers/
-  routes/
-  middleware/
-  app.js
-  server.js
-```
-
----
-
-## Setup
-
-1. Install dependencies
-
-```
-npm install
-```
-
-2. Create `.env` file
-
-```
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_secret
-```
-
-3. Run project
-
-```
-npm run dev
-```
-
-Server runs on:
-
-```
-http://localhost:5000
-```
+* Email: `viewer@test.com`
+* Password: `123456`
 
 ---
 
@@ -132,23 +65,51 @@ http://localhost:5000
 
 ### Auth
 
-* POST /api/users/register
-* POST /api/users/login
+* POST `/api/users/register`
+* POST `/api/users/login`
+
+---
 
 ### Records
 
-* GET /api/records
-* POST /api/records (admin)
-* PATCH /api/records/:id (admin)
-* DELETE /api/records/:id (admin)
+* GET `/api/records`
+* POST `/api/records` (Admin only)
+* PATCH `/api/records/:id` (Admin)
+* DELETE `/api/records/:id` (Admin)
+
+---
 
 ### Dashboard
 
-* GET /api/dashboard/summary
-* GET /api/dashboard/categories
-* GET /api/dashboard/trends
+* GET `/api/dashboard/summary`
+* GET `/api/dashboard/categories`
+* GET `/api/dashboard/trends`
 
 ---
+
+## Setup (Local)
+
+1. Install dependencies
+
+```
+npm install
+```
+
+2. Create `.env`
+
+```
+MONGO_URI=your_mongo_uri
+JWT_SECRET=your_secret
+```
+
+3. Run server
+
+```
+npm run dev
+```
+
+---
+
 
 ## Author
 
