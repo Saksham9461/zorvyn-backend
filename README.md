@@ -85,6 +85,39 @@ You can use these accounts to test different roles:
 * GET `/api/dashboard/categories`
 * GET `/api/dashboard/trends`
 
+## Request Payload
+
+### Register User
+POST `/api/users/register`
+
+```json
+{
+  "name": string,
+  "email": string,
+  "password": string
+}
+```
+### Login User
+POST `/api/users/login`
+
+```json
+{
+  "email": string,
+  "password": string
+}
+```
+### Create Financial Record
+POST `/api/records`
+
+```json
+{
+  "amount": number, //required
+  "type": string, //required
+  "category": string, //required
+  "date": string, //required (YYYY-MM-DD)
+  "notes": string //optional
+}
+```
 ---
 
 ## Setup (Local)
